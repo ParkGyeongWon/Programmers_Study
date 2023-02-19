@@ -1,14 +1,22 @@
+import java.util.ArrayList;
+
 class Solution {
     public int[] solution(long n) {
-        String str = String.valueOf(n); //정수를 문자열로 변경
-        char[] ch = str.toCharArray(); //문자열을 배열에 한 글자씩 저장
         
-        int[] answer = new int[str.length()]; //정수를 뒤집어서 저장할 배열 생성
         
-        for(int i=str.length()-1;i>=0;i--){
-            answer[str.length()-i-1] = str.charAt(i)-'0'; //char형을 int 형으로 바꿔줄떈 아스키코드 값으로 변환되기 떄문에 -'0'을 해줘야 된다.
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        while(n>0){
+            list.add((int)(n%10)); // n =>12345 => 5 추출 & n=1234 => 4추출 & n=123 => 3추출 &n=12 => 2추출 & n=1  
+            n/=10;                // n=1234
         }
-  
+                     
+        int[] answer = new int[list.size()];
+                     
+        for(int i=0;i<list.size();i++){
+            answer[i]  = list.get(i);
+        }
+        
         
         return answer;
     }
