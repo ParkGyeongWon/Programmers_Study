@@ -5,7 +5,7 @@ class Solution {
         
         String Three = "";
         
-        while(n>0){ //주어진 n을 인수분해 하여 문자열에 저장을한다.
+        while(n>0){ //주어진 n을 인수분해 하여 문자열에 저장을한다. 이렇게 하면 주어진 조건을 전부 skip하여 나타낼수 있다.
             
             Three+=n%3;   
             n/=3;
