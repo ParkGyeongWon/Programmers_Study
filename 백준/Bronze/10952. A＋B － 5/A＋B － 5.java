@@ -1,37 +1,23 @@
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
+//A+B - 5(10952)
 public class Main {
+    public static void main(String[] args) throws IOException {
 
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-
-		int  A,B;
-		ArrayList<Integer>list = new ArrayList<>();
-		
-		
-		Scanner sc= new Scanner(System.in);
-		
-		A=sc.nextInt();
-		B=sc.nextInt();
-		list.add(A+B);
-		
-		while(A!=0 && B !=00) {
-			
-			
-			A=sc.nextInt();
-			B=sc.nextInt();
-			list.add(A+B);
-		
-		}
-		
-		for(int i=0;i<list.size()-1;i++) {
-			System.out.println(list.get(i));
-			
-			
-		}
-		
-
-	}
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        while(true) {
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            if(a==0 && b==0) {
+               break;
+            }
+            sb.append((a+b)).append("\n");
+        }
+        System.out.println(sb);
+    }
 }
