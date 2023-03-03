@@ -1,45 +1,58 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
-		int N,M; //N개 바구니 / M번  바꾸기
-		int i,j; // i번쨰부터 j번쨰까지 바꾸기
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+		int N,M;
 		
-		Scanner sc= new Scanner(System.in);
+		N=Integer.parseInt(st.nextToken());
+		M=Integer.parseInt(st.nextToken());
 		
-		N=sc.nextInt();
-		M=sc.nextInt();
+		int[] arr= new int[N+1];
 		
-		int[] arr = new int[N+1];
-		
-		for(int k=1;k<=N;k++) { // 1 2 3 4 5
-			arr[k]=k;
+		for(int i=1;i<=N;i++) { //기본 배열생성
+			arr[i]=i;
 		}
-		
 		
 		for(int a=0;a<M;a++) {
 			Stack<Integer> stack = new Stack<>();
-			i= sc.nextInt();
-			j= sc.nextInt();
+			st= new StringTokenizer(br.readLine()," ");
+			int i = Integer.parseInt(st.nextToken());
+			int j = Integer.parseInt(st.nextToken());
 			
-			for(int b=i;b<=j;b++) 
-				stack.push(arr[b]);
+			for(int b=i;b<=j;b++) { //후입선출 : 늦게 들어온 것이 먼저 빠져나가는
+				stack.push(arr[b]); //스택에 push(값 입력)
+				
+			}
 			
-			
-			for(int c=i;c<=j;c++) 
-				arr[c] = stack.pop();
-			
-			
+			for(int b=i;b<=j;b++) {
+				arr[b] = stack.pop(); //스택에 저장되어 있는 값을 arr에 pop으로 입력
+			}
 		}
 		
+		
 		for(int as : arr) {
-			if(as>0)
-			System.out.print(as+" ");
+			if(as>0) {
+				bw.write(as+" ");
+			}
 		}
+		bw.flush();
+		bw.close();
+		br.close();
+		
+
+		
 	}
 
 }
